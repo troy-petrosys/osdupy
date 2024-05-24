@@ -3,6 +3,7 @@
 
 import os
 from time import time
+from ..services.schema import SchemaService
 from ..services.search import SearchService
 from ..services.storage import StorageService
 from ..services.dataset import DatasetService
@@ -19,6 +20,10 @@ class BaseOsduClient:
     @property
     def api_url(self):
         return self._api_url
+
+    @property
+    def schema(self):
+        return self._schema
 
     @property
     def search(self):
@@ -61,6 +66,7 @@ class BaseOsduClient:
         self._api_url = api_url.rstrip('/')
 
         # Instantiate services.
+        self._schema = SchemaService(self)
         self._search = SearchService(self)
         self._storage = StorageService(self)
         self._dataset = DatasetService(self)

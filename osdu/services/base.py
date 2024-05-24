@@ -11,3 +11,12 @@ class BaseService():
             "data-partition-id": self._client._data_partition_id,
             "Authorization": "Bearer " + self._client.access_token
         }
+        
+    def _headers(self, content):
+        return {
+            "Content-Type": "application/json",
+            "Content-Length": str(len(content)),
+            "Cache-Control": 'no-cache',
+            "data-partition-id": self._client._data_partition_id,
+            "Authorization": "Bearer " + self._client.access_token
+        }
