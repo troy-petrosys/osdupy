@@ -8,6 +8,7 @@ from ..services.search import SearchService
 from ..services.storage import StorageService
 from ..services.dataset import DatasetService
 from ..services.entitlements import EntitlementsService
+from ..services.workflow import WorkflowService
 
 
 class BaseOsduClient:
@@ -36,6 +37,10 @@ class BaseOsduClient:
     @property
     def entitlements(self):
         return self._entitlements
+
+    @property
+    def workflow(self):
+        return self._workflow
 
     @property
     def delivery(self):
@@ -71,6 +76,7 @@ class BaseOsduClient:
         self._storage = StorageService(self)
         self._dataset = DatasetService(self)
         self._entitlements = EntitlementsService(self)
+        self._workflow = WorkflowService(self)
         # TODO: Implement these services.
         # self.__legal = LegaService(self)
 
